@@ -7,19 +7,10 @@ import jwt from 'jsonwebtoken';
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT ? process.env.PORT : 3000;
 const secret = process.env.SECRET_KEY;
-const expireTime = process.env.EXPIRES_IN;
-const users = [
-  {
-    uuid: '8828139a-5bd4-414d-bc93-71ac0a310b70',
-    username: 'Christian',
-    age: 24,
-    email: 'chris@email.com',
-    password: '$2b$10$ycUqzkiYNIxIZ.53LOPsLOA3gpSTC9w6XbtsfmusLIedn3L4Lr/Pu',
-    createdOn: 'Fri Mar 18 2022 19:58:14 GMT-0300 (Horário Padrão de Brasília)',
-  },
-];
+const expireTime = process.env.EXPIRES_IN ? process.env.EXPIRES_IN : '1h';
+const users = [];
 
 app.use(express.json());
 
